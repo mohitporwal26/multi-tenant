@@ -29,6 +29,6 @@ export default function middleware(req) {
   ) {
     // rewrite to the current hostname under the pages/sites folder
     // the main logic component will happen in pages/sites/[site]/index.tsx
-    return NextResponse.rewrite(`http://localhost:3000/_sites/${currentHost}${pathname}`);
+    return NextResponse.rewrite(new URL(`/_sites/${currentHost}${pathname}`, req.url));
   }
 }
